@@ -6,7 +6,7 @@
 ;; Maintainer: Jen-Chieh Shen <jcs090218@gmail.com>
 ;; URL: https://github.com/emacs-eine/gt-cli
 ;; Version: 1.0.0
-;; Package-Requires: ((emacs "26.1")
+;; Package-Requires: ((emacs "28.1")
 ;;                    (gt "3.2.1")
 ;;                    (commander "0.7.0")
 ;;                    (msgu "0.1.0"))

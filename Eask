@@ -16,7 +16,7 @@
 (source 'melpa)
 (source 'jcs-elpa)
 
-(depends-on "emacs" "26.1")
+(depends-on "emacs" "28.1")
 (depends-on "gt")
 (depends-on "commander")
 (depends-on "msgu")
