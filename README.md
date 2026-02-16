@@ -6,6 +6,65 @@ A command-line interface for gt.el
 
 [![CI](https://github.com/emacs-eine/gt-cli/actions/workflows/test.yml/badge.svg)](https://github.com/emacs-eine/gt-cli/actions/workflows/test.yml)
 
+Here is the basic usage of this tool:
+
+```console
+USAGE: gt-cli [COMMAND] [OPTIONS]
+
+A command-line interface for gt
+
+COMMANDS:
+
+ translate [*]                                                      Translate the text and output to standard output.
+
+OPTIONS:
+
+ --help, -h                                                         Show usage information and exit
+ --target-language <target-language>, -t <target-language>          Set the target language.
+ --source-language <source-language>, -s <source-language>          Set the source language.
+```
+
+## 💾 Installation
+
+You need to add this line to your Eask file (global recommanded).
+
+```elisp
+(source 'gnu)
+(source 'melpa)
+(source 'jcs-elpa)
+```
+
+Then, install it:
+
+```console
+eask install -g gt-cli
+```
+
+## 🔧 Usage
+
+To translate text:
+
+```console
+eask -g exec gt-cli translate "hello world!" -t "zh-TW"
+```
+
+The output:
+
+```console
+你好世界！
+```
+
+### 🔍 Configuration
+
+You can configure translation behaviour from the Eask file.
+
+```elisp
+(setq gt-cli-source-language "en"
+      gt-cli-target-language "auto")
+```
+
+See [gt.el][]'s home page for more configuration options.
+
 ## 🛠️ Contribute
 
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
@@ -76,3 +135,8 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 See [`LICENSE`](./LICENSE.txt) for details.
+
+
+<!-- Links -->
+
+[gt.el]: https://github.com/lorniu/gt.el
