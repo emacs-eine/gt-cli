@@ -8,6 +8,7 @@
 (keywords "convenience")
 
 (package-file "gt-cli.el")
+(files "bin")
 
 (script "test" "echo \"Error: no test specified\" && exit 1")
 
