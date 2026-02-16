@@ -37,20 +37,41 @@
 (require 'gt)
 (require 'msgu)
 
-(defvar gt-cli--text
-  nil)
+(defgroup gt-cli nil
+  "A command-line interface for gt."
+  :prefix "gt-cli-"
+  :group 'tool
+  :link '(url-link :tag "Repository" "https://github.com/emacs-eine/gt-cli"))
 
-(defvar gt-cli--target-language
-  "en")
+(defcustom gt-cli-source-language "auto"
+  "The default source language you wish to translate from."
+  :type 'string
+  :group 'gt-cli)
 
-(defvar gt-cli--source-language
-  "auto")
+(defcustom gt-cli-target-language "en"
+  "The default target language you wish to translate to."
+  :type 'string
+  :group 'gt-cli)
+
+;; internal use
+(defvar gt-cli--text nil)
 
 ;;;###autoload
-(defun gt-cli ()
+(defun gt-cli (src-lang target-lang text)
   "Translate text and output to standard output."
-  ;; TODO: ..
-  )
+  (when (string-empty-p text)
+    (error "Translation text cannot be an empty string" text))
+  (let ((gt-langs (or gt-langs
+                      (list src-lang target-lang)))
+        (gt-default-translator (or gt-default-translator
+                                   (gt-translator :engines (gt-google-engine)
+                                                  :render  (gt-kill-ring-render)))))
+    (msgu-silent
+      (with-temp-buffer
+        (insert text)
+        (mark-whole-buffer)
+        (call-interactively #'gt-translate)))
+    (princ (car kill-ring))))
 
 (provide 'gt-cli)
 ;;; gt-cli.el ends here

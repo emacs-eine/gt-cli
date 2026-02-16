@@ -40,22 +40,17 @@
 
 (defun gt-cli--translate (&rest args)
   "Translate the text and output to standard output."
-  (gt-cli
-   gt-cli--source-language
-   gt-cli--target-language
-   (mapconcat #'identity args " ")))
-
-(defun gt-cli--list ()
-  "List of supported languages."
-  (pp google-translate-supported-languages-alist))
+  (gt-cli gt-cli-source-language
+          gt-cli-target-language
+          (mapconcat #'identity args " ")))
 
 (defun gt-cli--set-target-language (arg)
   "Set the target language."
-  (setq gt-cli--target-language arg))
+  (setq gt-cli-target-language arg))
 
 (defun gt-cli--set-source-language (arg)
   "Set the source language."
-  (setq gt-cli--source-language arg))
+  (setq gt-cli-source-language arg))
 
 (commander
  (name "gt-cli")
@@ -66,9 +61,6 @@
  (command "translate [*]"
           "Translate the text and output to standard output."
           gt-cli--translate)
- (command "list"
-          "List of supported languages."
-          gt-cli--list)
 
  (option "--target-language <target-language>, -t <target-language>"
          gt-cli--set-target-language)
