@@ -48,7 +48,7 @@
   :type 'string
   :group 'gt-cli)
 
-(defcustom gt-cli-target-language "en"
+(defcustom gt-cli-target-language "ko"
   "The default target language you wish to translate to."
   :type 'string
   :group 'gt-cli)
@@ -61,7 +61,8 @@
   "Translate text and output to standard output."
   (when (string-empty-p text)
     (error "Translation text cannot be an empty string" text))
-  (let ((gt-langs (or gt-langs
+  (let ((old-kill-ring kill-ring)
+        (gt-langs (or gt-langs
                       (list src-lang target-lang)))
         (gt-default-translator (or gt-default-translator
                                    (gt-translator :engines (gt-google-engine)
@@ -70,7 +71,10 @@
       (with-temp-buffer
         (insert text)
         (mark-whole-buffer)
-        (call-interactively #'gt-translate)))
+        (call-interactively #'gt-translate))
+      ;; Pause until result came in.
+      (while (equal old-kill-ring kill-ring)
+        (sit-for 0.2)))
     (princ (car kill-ring))))
 
 (provide 'gt-cli)
