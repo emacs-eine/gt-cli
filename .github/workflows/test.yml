@@ -52,6 +52,6 @@ jobs:
 
     - name: Test commands
       run: |
-        chmod 777 -R ./.eask/
         eask -g link add gt-cli .
+        chmod 777 -R ~/.eask/
         eask -g exec gt-cli translate Hello World!? -t ja
