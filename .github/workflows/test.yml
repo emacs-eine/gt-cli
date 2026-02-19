@@ -50,8 +50,10 @@ jobs:
       run:
         make ci
 
+    - name: Give permissions
+      run: chmod -R 777 ./bin/
+
     - name: Test commands
       run: |
         eask -g link add gt-cli .
-        chmod -R 777 ~/.eask/
         eask -g exec gt-cli translate Hello World!? -t ja
