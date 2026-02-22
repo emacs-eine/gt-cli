@@ -2,7 +2,7 @@
 [![JCS-ELPA](https://raw.githubusercontent.com/jcs-emacs/badges/master/elpa/v/gt-cli.svg)](https://jcs-emacs.github.io/jcs-elpa/#/gt-cli)
 
 # gt-cli
-A command-line interface for gt.el
+> A command-line interface for gt.el
 
 [![CI](https://github.com/emacs-eine/gt-cli/actions/workflows/test.yml/badge.svg)](https://github.com/emacs-eine/gt-cli/actions/workflows/test.yml)
 
