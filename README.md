@@ -46,7 +46,7 @@ eask install -g gt-cli
 To translate text:
 
 ```console
-eask -g exec gt-cli translate "hello world!" -t "zh-TW"
+eask -g exec gt-cli "hello world!" -t "zh-TW"
 ```
 
 The output:

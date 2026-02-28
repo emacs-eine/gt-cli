@@ -55,12 +55,8 @@
 (commander
  (name "gt-cli")
  (description "A command-line interface for gt")
- (default commander-print-usage-and-exit)
+ (default gt-cli--translate)
  (option "--help, -h" "Show usage information and exit" commander-print-usage-and-exit)
-
- (command "translate [*]"
-          "Translate the text and output to standard output."
-          gt-cli--translate)
 
  (option "--target-language <target-language>, -t <target-language>"
          gt-cli--set-target-language)

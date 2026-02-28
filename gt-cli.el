@@ -60,7 +60,7 @@
 (defun gt-cli (src-lang target-lang text)
   "Translate text and output to standard output."
   (when (string-empty-p text)
-    (error "Translation text cannot be an empty string" text))
+    (error "The translation text cannot be an empty string"))
   (let ((old-kill-ring kill-ring)
         (gt-langs (or gt-langs
                       (list src-lang target-lang)))
