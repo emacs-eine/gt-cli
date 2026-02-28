@@ -13,10 +13,6 @@ USAGE: gt-cli [COMMAND] [OPTIONS]
 
 A command-line interface for gt
 
-COMMANDS:
-
- translate [*]                                                      Translate the text and output to standard output.
-
 OPTIONS:
 
  --help, -h                                                         Show usage information and exit
